@@ -4,7 +4,8 @@ import Icon from '../../img/Icon/'
 export default class ProjectsRender extends PureComponent  {
 
   handleClick = (e) => {
-    const target = e.target.value
+    const target = e.currentTarget.value
+    console.log(target)
     setTimeout(() => window.open(target), 1000)
     
   }
