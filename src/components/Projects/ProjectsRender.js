@@ -4,16 +4,25 @@ import Icon from '../../img/Icon/'
 export default class ProjectsRender extends PureComponent  {
 
   handleClick = (e) => {
-    const target = e.currentTarget.value
-    console.log(target)
-    setTimeout(() => window.open(target), 1000)
+    const value = e.currentTarget.value
+    const name = e.currentTarget.name
+    const id = (e.currentTarget.id)
+    this.props.handleUpdateCounter(id, {[name]: 1})
+    setTimeout(() => window.open(value), 1000)
     
   }
   
+  handleLikes = (e) => {
+    const value = e.currentTarget.value
+    const name = e.currentTarget.name
+    const id = (e.currentTarget.id)
+    this.props.handleUpdateCounter(id, {[name]: value})
+  }
+
 renderProjects = () => {
   return (
     <div className="projects_container">
-      { this.props.projects.map((p, index) => {
+      { this.props.projects.sort((a, b) => +a.likes < +b.likes).map((p, index) => {
         return (
         <div key={index} className="card">
           <div className="card_header">
@@ -32,23 +41,54 @@ renderProjects = () => {
             })}
           </div>
           <hr />
-          <div className="card_action">
-          { p.githubRepository && <button 
-            onClick={this.handleClick} 
-            value={`https://github.com/rbhgn/${p.githubRepository}`} 
-            className="card_action_button">
-              <Icon name="github" color="#000000" size={32} />
-          </button> }
-          { p.previewUrl && <button 
+          <div className="card_action-container">
+            <div className="card_action">
+            { p.githubRepository && <button 
               onClick={this.handleClick} 
-              value={p.previewUrl} 
+              name="gitHub"
+              id={p.id}
+              value={`https://github.com/rbhgn/${p.githubRepository}`} 
               className="card_action_button">
-                <Icon name="web" color="#000000" size={32} />
-          </button> }
+                <Icon name="github" color="#000000" size={32} />
+            </button> }
+            { p.previewUrl && <button 
+                onClick={this.handleClick} 
+                name="web"
+                id={p.id}
+                value={p.previewUrl} 
+                className="card_action_button">
+                  <Icon name="web" color="#000000" size={32} />
+            </button> }
+            </div>
+            <div className="card_action">
+            { <button 
+              onClick={this.handleLikes} 
+              name="likes"
+              id={p.id}
+              value="1"
+              className="card_action_button">
+                <Icon name="like" color="#000000" size={32} />
+            </button> }
+            {<button 
+                onClick={this.handleLikes} 
+                name="likes"
+                id={p.id}
+                value= "-1"
+                className="card_action_button">
+                  <Icon name="dislike" color="#000000" size={32} />
+            </button> }
+            </div>
+
+
+
           </div>
+
+
+
         </div>
         ) 
-      })}
+      })
+      }
     </div>
   )
 }
@@ -58,3 +98,5 @@ renderProjects = () => {
     )
   }
 }
+
+

@@ -55,6 +55,11 @@
 .card_tools {
   padding: 6px;
 }
+
+.card_action-container {
+  display: grid;
+  grid-template-columns: auto 125px;
+}
 .card_action {
   padding: 6px;
 }
