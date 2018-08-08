@@ -63,3 +63,26 @@ hr { width:100%; height:1px; background: #fff }
 .icon {
   padding: 2px;
 }
+
+.card_action_button {
+  padding: 6px;
+  border-radius: 50%;
+  margin: 2px;
+  outline:0;
+}
+
+.card_action_button:hover {
+  animation-name: rotation;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.card_action_button:active {
+  box-shadow: 0px 0px 0px grey;
+}
+
+@keyframes rotation {
+  0%   {transform: rotate(0deg)}
+  100% {transform: rotate(360deg); box-shadow: 2px 2px 10px grey;}
+}

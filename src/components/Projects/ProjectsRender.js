@@ -4,8 +4,9 @@ import Icon from '../../img/Icon/'
 export default class ProjectsRender extends PureComponent  {
 
   handleClick = (e) => {
-    console.log(e.target.value)
-    window.open(e.target.value);
+    const target = e.target.value
+    setTimeout(() => window.open(target), 1000)
+    
   }
   
 renderProjects = () => {
@@ -31,8 +32,18 @@ renderProjects = () => {
           </div>
           <hr />
           <div className="card_action">
-          { p.githubRepository && <button onClick={this.handleClick} value={`https://github.com/rbhgn/${p.githubRepository}`}>Github</button> }
-          { p.previewUrl && <button onClick={this.handleClick} value={p.previewUrl}>Web</button> }
+          { p.githubRepository && <button 
+            onClick={this.handleClick} 
+            value={`https://github.com/rbhgn/${p.githubRepository}`} 
+            className="card_action_button">
+              <Icon name="github" color="#000000" size={32} />
+          </button> }
+          { p.previewUrl && <button 
+              onClick={this.handleClick} 
+              value={p.previewUrl} 
+              className="card_action_button">
+                <Icon name="web" color="#000000" size={32} />
+          </button> }
           </div>
         </div>
         ) 
