@@ -62,7 +62,11 @@ export default class ProjectEdit extends PureComponent  {
             onChange={ this.handleChange } 
           />
         </div>
-
+        {this.props.tools && this.props.tools.map((t, index) => {
+          return (
+          <input type="checkbox" name={t.name} value={ this.state.previewUrl|| this.props.project.previewUrl || '' } key={index} />
+          )
+        })}
         { <button type="submit">{ this.props.project.title ? 'Edit Project': 'Add Project' } </button> }
       </form>
     </div>

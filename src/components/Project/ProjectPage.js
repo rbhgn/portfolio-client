@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { loadProject, updateProject, postProject}  from '../../actions/project'
 import ProjectEdit from './ProjectEdit';
 import { Redirect } from '../../../node_modules/react-router-dom';
+import { getTools } from '../../actions/tools'
 
 
 class Projectpage extends PureComponent  {
@@ -12,14 +13,14 @@ class Projectpage extends PureComponent  {
   }
   componentDidMount() {
     this.props.match.params.id && this.props.loadProject(this.props.match.params.id)
-    
+    this.props.getTools()
   }
  render() {
   if (!this.props.currentUser) return (
     <Redirect to="/" />
   )
   return (
-    <ProjectEdit project={ this.props.currentProject } onSubmit={ this.onSubmit}/>
+    <ProjectEdit project={ this.props.currentProject } tools={ this.props.tools } onSubmit={ this.onSubmit}/>
   )
  }
 }
@@ -27,8 +28,9 @@ class Projectpage extends PureComponent  {
 const mapStateToProps = function (state) {
 	return {
     currentUser: state.currentUser,
-    currentProject: state.project
+    currentProject: state.project,
+    tools: state.tools
 	}
 }
 
- export default connect(mapStateToProps, { loadProject, updateProject, postProject })(Projectpage)
+ export default connect(mapStateToProps, { loadProject, updateProject, postProject, getTools })(Projectpage)

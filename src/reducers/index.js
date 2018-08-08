@@ -5,6 +5,7 @@ import signup from './signup'
 import user from './user'
 import project from './project'
 import projects from './projects'
+import tools from './tools'
 
 export default {
   users,
@@ -13,5 +14,6 @@ export default {
   signup,
   user,
   project,
-  projects
+  projects,
+  tools
 }
