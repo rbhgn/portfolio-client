@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react'
 import Icon from '../../img/Icon/'
+import {Loader} from '../Loader'
 
 export default class ProjectsRender extends PureComponent  {
   state = {imagesLoaded: false}
@@ -108,7 +109,7 @@ renderProjects = () => {
 }
  render() {
     return (
-      this.state.imagesLoaded ? this.renderProjects() : <div className="loader"></div>
+      this.state.imagesLoaded ? this.renderProjects() : <Loader mainColor="#DED4B9" secundaryColor="#ffffff"/>
     )
   }
 }

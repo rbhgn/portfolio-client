@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import { connect } from 'react-redux'
 import { loadProjects, updateCounter}  from '../../actions/projects'
 import ProjectsRender from './ProjectsRender'
-
+import {Loader} from '../Loader'
 
 class ProjectsPage extends PureComponent  {
   handleUpdateCounter = (id, data) => {
@@ -15,7 +15,7 @@ class ProjectsPage extends PureComponent  {
  render() {
   return (
 
-    this.props.projects.length > 0 ? <ProjectsRender projects={ this.props.projects } handleUpdateCounter={ this.handleUpdateCounter }/> : <div className="loader"></div>
+    this.props.projects.length > 0 ? <ProjectsRender projects={ this.props.projects } handleUpdateCounter={ this.handleUpdateCounter }/> : <Loader mainColor="#DED4B9" secundaryColor="#ffffff"/>
   )
  }}
 
