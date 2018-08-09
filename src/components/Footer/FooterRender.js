@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import Icon from '../../img/Icon/'
 
 export default class FooterRender extends PureComponent  {
 
@@ -6,8 +7,8 @@ export default class FooterRender extends PureComponent  {
   return (
     <div className="footer_container">
       <ul>
-        <li>Projects</li>
-        <li>About</li>
+        <li><Icon name="github" color="#ffffff" size={48} /></li>
+        <li><Icon name="linkedin" color="#ffffff" size={48} /></li>
       </ul>
     </div>
   )

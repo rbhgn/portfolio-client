@@ -15,7 +15,7 @@ class ProjectsPage extends PureComponent  {
  render() {
   return (
 
-    this.props.projects.length > 0 ? <ProjectsRender projects={ this.props.projects } handleUpdateCounter={ this.handleUpdateCounter }/> : <Loader color="#ffffff"/>
+    this.props.projects.length > 0 ? <ProjectsRender projects={ this.props.projects } handleUpdateCounter={ this.handleUpdateCounter }/> : <Loader color="#ee5050"/>
   )
  }}
 

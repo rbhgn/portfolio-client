@@ -3,7 +3,7 @@ import Icon from '../../img/Icon/'
 import {Loader} from '../Loader'
 
 export default class ProjectsRender extends PureComponent  {
-  state = {imagesLoaded: false}
+  state = {imagesLoaded: false, page: 0}
   handleClick = (e) => {
     const value = e.currentTarget.value
     const name = e.currentTarget.name
@@ -12,7 +12,20 @@ export default class ProjectsRender extends PureComponent  {
     setTimeout(() => window.open(value), 1000)
     
   }
-  
+  prevPage = (e) => {
+    this.refs.Card.style.opacity = 0
+    setTimeout(() => {
+    return (
+    this.state.page <= 0 ? this.setState({page: this.props.projects.length -1}) : this.setState((prevState) => {return {page: prevState.page - 1}})
+    )}, 500)}
+
+  nextPage = () => {
+    this.refs.Card.style.opacity = 0
+    setTimeout(() => {
+      return (
+    this.state.page >= this.props.projects.length -1 ? this.setState({page: 0}) : this.setState((prevState) => {return {page: prevState.page + 1}})
+  )}, 500)}
+
   handleLikes = (e) => {
     const value = e.currentTarget.value
     const name = e.currentTarget.name
@@ -44,49 +57,49 @@ export default class ProjectsRender extends PureComponent  {
 renderProjects = () => {
   return (
     <div className="projects_container">
-      { this.props.projects.sort((a, b) => +a.likes < +b.likes).map((p, index) => {
-        return (
-        <div key={index} className="card">
-          <div className="card_header">
-            {p.title}
+    <div className="slide_button">
+    <button onClick={this.prevPage} > Links </button>
+    </div>
+        <div key={this.state.page} className="card" ref="Card">
+          <div className="card_header" >
+            {this.props.projects[this.state.page].title}
           </div>
-          <div className="card_container_img" style={{backgroundImage:`url(${p.imgSmall})`}}>
-          <img src={p.img} onLoad={ this.imgOnload } className="card_img" alt={ p.title }/>
+          <div className="card_container_img" style={{backgroundImage:`url(${this.props.projects[this.state.page].imgSmall})`}}>
+          <img src={this.props.projects[this.state.page].img} onLoad={ this.imgOnload } className="card_img" alt={ this.props.projects[this.state.page].title }/>
           </div>
           <div className="card_description">
-            {p.description}
+            {this.props.projects[this.state.page].description}
           </div>
           <hr />
           <div className="card_tools">
-            {p.tools.map((t, index) => {
-              
+            {this.props.projects[this.state.page].tools.map((t, index) => {
               return (<Icon name={t.name} color="#000000" size={32} key={index} value={index}/>)
             })}
           </div>
           <hr />
           <div className="card_action-container">
-            { p.githubRepository && <div className="card_action">
+            { this.props.projects[this.state.page].githubRepository && <div className="card_action">
                 <button 
                   onClick={this.handleClick} 
                   name="gitHub"
-                  id={p.id}
-                  value={`https://github.com/rbhgn/${p.githubRepository}`} 
+                  id={this.props.projects[this.state.page].id}
+                  value={`https://github.com/rbhgn/${this.props.projects[this.state.page].githubRepository}`} 
                   className="card_action_button">
-                  <Icon name="github" color="#000000" size={16} />
+                  <Icon name="github" color="#ee5050" size={16} />
                 </button>  
-                <p className="view_text">{ p.gitHub }</p> 
+                <p className="view_text">{ this.props.projects[this.state.page].gitHub }</p> 
             </div> }
               
-            { p.previewUrl &&  <div className="card_action">
+            { this.props.projects[this.state.page].previewUrl &&  <div className="card_action">
               <button 
                 onClick={this.handleClick} 
                 name="web"
-                id={p.id}
-                value={p.previewUrl} 
+                id={this.props.projects[this.state.page].id}
+                value={this.props.projects[this.state.page].previewUrl} 
                 className="card_action_button">
-                  <Icon name="web" color="#000000" size={16} />
+                  <Icon name="web" color="#ee5050" size={16} />
               </button> 
-              <p className="view_text">{ p.web }</p> 
+              <p className="view_text">{ this.props.projects[this.state.page].web }</p> 
             </div>
             }
             
@@ -94,24 +107,24 @@ renderProjects = () => {
               <button 
                 onClick={this.handleLikes} 
                 name="likes"
-                id={p.id}
+                id={this.props.projects[this.state.page].id}
                 value="1"
                 className="card_action_button">
-                  <Icon name="heart" color="#000000" size={16} />
+                  <Icon name="heart" color="#ee5050 " size={16} />
               </button> 
-              <p className="view_text">{ p.likes }</p> 
+              <p className="view_text">{ this.props.projects[this.state.page].likes }</p> 
             </div> }
           </div>
         </div>
-        ) 
-      })
-      }
+        <div className="slide_button">
+        <button onClick={this.nextPage}>rechts</button>
+        </div>
     </div>
   )
 }
  render() {
     return (
-      this.state.imagesLoaded ? this.renderProjects() : <Loader color="#ffffff"/>
+      this.state.imagesLoaded ? this.renderProjects() : <Loader color="#ee5050"/>
     )
   }
 }
