@@ -108,7 +108,7 @@ renderProjects = () => {
 }
  render() {
     return (
-      this.state.imagesLoaded && this.renderProjects()
+      this.state.imagesLoaded ? this.renderProjects() : <div className="loader"></div>
     )
   }
 }
