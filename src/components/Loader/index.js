@@ -5,9 +5,9 @@ export const Loader = (props) => {
 
     <div className="loader"
       style={{ 
-        borderColor: `${props.mainColor}`, 
-        borderTopColor: `${props.secundaryColor}`,
-        backgroundColor: "#DED4B9"
+        borderColor: `transparent`, 
+        borderTopColor: `${props.color}`,
+        backgroundColor: `transparent`
         }}
     >
     </div>

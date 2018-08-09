@@ -8,20 +8,23 @@ import LoginPage from './components/Login/LoginPage';
 import LogoutPage from './components/Logout/LogoutPage';
 import ProjectPage from './components/Project/ProjectPage';
 import ProjectsPage from './components/Projects/ProjectsPage'
-
+import NavbarPage from './components/Navbar/NavbarPage'
+import FooterPage from './components/Footer/FooterPage';
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="container">
-          <main style={{marginTop:75}}>
+        <NavbarPage />
+          <main>
             <Route exact path="/signup" component={ SignupPage }/>
             <Route exact path="/login" component={ LoginPage }/>
             <Route exact path="/logout" component={ LogoutPage }/>
             <Route exact path="/project/:id?" component={ ProjectPage}/>
             <Route exact path="/projects" component={ ProjectsPage}/>
           </main>
+          <FooterPage />
         </div>
       </Router>
     )

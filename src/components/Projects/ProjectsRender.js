@@ -17,7 +17,8 @@ export default class ProjectsRender extends PureComponent  {
     const value = e.currentTarget.value
     const name = e.currentTarget.name
     const id = (e.currentTarget.id)
-    this.props.handleUpdateCounter(id, {[name]: value})
+    !this.state[`like_${id}`] && this.props.handleUpdateCounter(id, {[name]: value})
+    this.setState({[`like_${id}`]: true})
   }
 
   loadImage = (url) => {
@@ -32,12 +33,12 @@ export default class ProjectsRender extends PureComponent  {
   componentDidMount() {
     this.props.projects.map(async (image, index) => {
       try {
-       
          await (this.loadImage(image.img) && await this.loadImage(image.imgSmall)) && this.props.projects.length === index + 1 && this.setState({ imagesLoaded:true })
       } catch(e) {
         console.log(e)
       }
     })
+    this.props.projects.map((a, index) => this.setState({[`like_${index}`]: false}))
   }
 
 renderProjects = () => {
@@ -58,47 +59,48 @@ renderProjects = () => {
           <hr />
           <div className="card_tools">
             {p.tools.map((t, index) => {
+              
               return (<Icon name={t.name} color="#000000" size={32} key={index} value={index}/>)
             })}
           </div>
           <hr />
           <div className="card_action-container">
-            <div className="card_action">
-            { p.githubRepository && <button 
-              onClick={this.handleClick} 
-              name="gitHub"
-              id={p.id}
-              value={`https://github.com/rbhgn/${p.githubRepository}`} 
-              className="card_action_button">
-                <Icon name="github" color="#000000" size={32} />
-            </button> }
-            { p.previewUrl && <button 
+            { p.githubRepository && <div className="card_action">
+                <button 
+                  onClick={this.handleClick} 
+                  name="gitHub"
+                  id={p.id}
+                  value={`https://github.com/rbhgn/${p.githubRepository}`} 
+                  className="card_action_button">
+                  <Icon name="github" color="#000000" size={16} />
+                </button>  
+                <p className="view_text">{ p.gitHub }</p> 
+            </div> }
+              
+            { p.previewUrl &&  <div className="card_action">
+              <button 
                 onClick={this.handleClick} 
                 name="web"
                 id={p.id}
                 value={p.previewUrl} 
                 className="card_action_button">
-                  <Icon name="web" color="#000000" size={32} />
-            </button> }
+                  <Icon name="web" color="#000000" size={16} />
+              </button> 
+              <p className="view_text">{ p.web }</p> 
             </div>
-            <div className="card_action">
-            { <button 
-              onClick={this.handleLikes} 
-              name="likes"
-              id={p.id}
-              value="1"
-              className="card_action_button">
-                <Icon name="like" color="#000000" size={32} />
-            </button> }
-            {<button 
+            }
+            
+            { <div className="card_action"> 
+              <button 
                 onClick={this.handleLikes} 
                 name="likes"
                 id={p.id}
-                value= "-1"
+                value="1"
                 className="card_action_button">
-                  <Icon name="dislike" color="#000000" size={32} />
-            </button> }
-            </div>
+                  <Icon name="heart" color="#000000" size={16} />
+              </button> 
+              <p className="view_text">{ p.likes }</p> 
+            </div> }
           </div>
         </div>
         ) 
@@ -109,7 +111,7 @@ renderProjects = () => {
 }
  render() {
     return (
-      this.state.imagesLoaded ? this.renderProjects() : <Loader mainColor="#DED4B9" secundaryColor="#ffffff"/>
+      this.state.imagesLoaded ? this.renderProjects() : <Loader color="#ffffff"/>
     )
   }
 }
