@@ -6,7 +6,6 @@ import ProjectsRender from './ProjectsRender'
 
 class ProjectsPage extends PureComponent  {
   handleUpdateCounter = (id, data) => {
-    console.log(data)
     this.props.updateCounter(id, data)
   }
 
@@ -16,7 +15,7 @@ class ProjectsPage extends PureComponent  {
  render() {
   return (
 
-    this.props.projects.length > 0 ? <ProjectsRender projects={ this.props.projects } handleUpdateCounter={ this.handleUpdateCounter }/> : <p>LOADING...</p>
+    this.props.projects.length > 0 ? <ProjectsRender projects={ this.props.projects } handleUpdateCounter={ this.handleUpdateCounter }/> : <div className="loader"></div>
   )
  }}
 

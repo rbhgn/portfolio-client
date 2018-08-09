@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import Icon from '../../img/Icon/'
 
 export default class ProjectsRender extends PureComponent  {
-
+  state = {imagesLoaded: false}
   handleClick = (e) => {
     const value = e.currentTarget.value
     const name = e.currentTarget.name
@@ -19,6 +19,26 @@ export default class ProjectsRender extends PureComponent  {
     this.props.handleUpdateCounter(id, {[name]: value})
   }
 
+  loadImage = (url) => {
+    return new Promise(function(resolve, reject){
+        const img = new Image()
+        img.onload = () => resolve(img)
+        img.onerror = () => reject(img)
+        img.src = url
+    })
+  }
+
+  componentDidMount() {
+    this.props.projects.map(async (image, index) => {
+      try {
+       
+         await (this.loadImage(image.img) && await this.loadImage(image.imgSmall)) && this.props.projects.length === index + 1 && this.setState({ imagesLoaded:true })
+      } catch(e) {
+        console.log(e)
+      }
+    })
+  }
+
 renderProjects = () => {
   return (
     <div className="projects_container">
@@ -28,8 +48,8 @@ renderProjects = () => {
           <div className="card_header">
             {p.title}
           </div>
-          <div className="card_container_img">
-            <img src={p.img} className="card_img" alt={ p.title }/>
+          <div className="card_container_img" style={{backgroundImage:`url(${p.imgSmall})`}}>
+          <img src={p.img} onLoad={ this.imgOnload } className="card_img" alt={ p.title }/>
           </div>
           <div className="card_description">
             {p.description}
@@ -78,13 +98,7 @@ renderProjects = () => {
                   <Icon name="dislike" color="#000000" size={32} />
             </button> }
             </div>
-
-
-
           </div>
-
-
-
         </div>
         ) 
       })
@@ -94,9 +108,7 @@ renderProjects = () => {
 }
  render() {
     return (
-      this.renderProjects()
+      this.state.imagesLoaded && this.renderProjects()
     )
   }
 }
-
-
