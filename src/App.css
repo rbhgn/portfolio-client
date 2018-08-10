@@ -36,20 +36,15 @@ body {
   outline:0;
   background: transparent;
   border: none;
-  box-shadow:  0px 0px 0px 0px grey;
-  transform: translate(0px, 0px);
-  transition: all 0.5s;
+  transition: all 0.4s;
 }
 
 .slide_button:hover {
-  box-shadow: 1px 1px 5px 1px grey;
-  transform: translate(-1px, -1px);
-  transition: all 0.5s;
+  background: #e6eaec;
 }
 
 .slide_button:active {
-  box-shadow: inset 1px 1px 10px 1px grey;
-  transform: translate(1px, 1px);
+  background: transparent;
 }
 
 
@@ -91,7 +86,7 @@ body {
   width: 100%;
   max-height: 100vh;
   margin: auto;
-  animation: fadein 4s;
+  animation: fadein 2s;
 }
 
 .card_description {

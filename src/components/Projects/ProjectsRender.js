@@ -17,14 +17,14 @@ export default class ProjectsRender extends PureComponent  {
   }
 
   prevPage = () => {
-    this.refs.Card.style.opacity = 0
+    if (this.refs.Card) this.refs.Card.style.opacity = 0
     setTimeout(() => {
     return (
     this.state.page <= 0 ? this.setState({page: this.props.projects.length -1, imgLoaded:false, imgSmallLoaded:false}) : this.setState((prevState) => {return {page: prevState.page - 1, imgLoaded:false, imgSmallLoaded:false}})
     )}, 500)}
 
   nextPage = () => {
-    this.refs.Card.style.opacity = 0
+    if (this.refs.Card) this.refs.Card.style.opacity = 0
     setTimeout(() => {
       return (
     this.state.page >= this.props.projects.length -1 ? this.setState({page: 0, imgLoaded:false, imgSmallLoaded:false}) : this.setState((prevState) => {return {page: prevState.page + 1, imgLoaded:false, imgSmallLoaded:false}})
@@ -50,7 +50,6 @@ export default class ProjectsRender extends PureComponent  {
   }
 
   preloadImg = async (p) => {
-    console.log(p)
     try {
       await this.loadImage(this.props.projects[p].img) && this.setState({ imgLoaded: true })
     } catch(e) {
@@ -59,7 +58,6 @@ export default class ProjectsRender extends PureComponent  {
   }
 
   preloadImgSmall = async (p) => {
-    console.log(p)
     try {
       await this.loadImage(this.props.projects[p].imgSmall) && this.setState({ imgSmallLoaded: true })
     } catch(e) {
@@ -96,18 +94,6 @@ renderProjects = () => {
       </div>
       <hr />
       <div className="card_action-container">
-        { this.props.projects[this.state.page].githubRepository && <div className="card_action">
-            <button 
-              onClick={this.handleClick} 
-              name="gitHub"
-              id={this.props.projects[this.state.page].id}
-              value={`https://github.com/rbhgn/${this.props.projects[this.state.page].githubRepository}`} 
-              className="card_action_button">
-              <Icon name="github" color="#ee5050" width={16} height={16}  />
-            </button>  
-            <p className="view_text">{ this.props.projects[this.state.page].gitHub }</p> 
-        </div> }
-          
         { this.props.projects[this.state.page].previewUrl &&  <div className="card_action">
           <button 
             onClick={this.handleClick} 
@@ -120,7 +106,19 @@ renderProjects = () => {
           <p className="view_text">{ this.props.projects[this.state.page].web }</p> 
         </div>
         }
-        
+
+        { this.props.projects[this.state.page].githubRepository && <div className="card_action">
+            <button 
+              onClick={this.handleClick} 
+              name="gitHub"
+              id={this.props.projects[this.state.page].id}
+              value={`https://github.com/rbhgn/${this.props.projects[this.state.page].githubRepository}`} 
+              className="card_action_button">
+              <Icon name="github" color="#ee5050" width={16} height={16}  />
+            </button>  
+            <p className="view_text">{ this.props.projects[this.state.page].gitHub }</p> 
+        </div> }
+          
         { <div className="card_action"> 
           <button 
             onClick={this.handleLikes} 
@@ -141,11 +139,11 @@ renderProjects = () => {
      
     <div className="projects_container">
       <div className="slide_button_container">
-        <button onClick={this.prevPage}className="slide_button" ><Icon name="arrow-left" color="#ee5050 " width={16} height={64} className="slide_icon_left" /></button>
+        <button onClick={this.prevPage}className="slide_button" ><Icon name="arrow-left" color="#ee5050 " width={16} height={256} className="slide_icon_left" /></button>
       </div>
       {this.state.imgLoaded && this.state.imgSmallLoaded ? this.renderProjects() : <div className="card"></div>}
       <div className="slide_button_container">
-        <button onClick={this.nextPage} className="slide_button"><Icon name="arrow-right" color="#ee5050 " width={16} height={64}  /></button>
+        <button onClick={this.nextPage} className="slide_button"><Icon name="arrow-right" color="#ee5050 " width={16} height={256}/></button>
       </div>
     </div>
     )
