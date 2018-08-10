@@ -10,7 +10,6 @@ export default class ProjectsRender extends PureComponent  {
     const id = (e.currentTarget.id)
     this.props.handleUpdateCounter(id, {[name]: 1})
     setTimeout(() => window.open(value), 1000)
-    
   }
   prevPage = () => {
     this.refs.Card.style.opacity = 0

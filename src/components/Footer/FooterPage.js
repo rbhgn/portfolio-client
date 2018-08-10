@@ -6,13 +6,11 @@ import FooterRender from './FooterRender'
 class FooterPage extends PureComponent  {
  
  render() {
-
   return (
     <FooterRender />
   )
  }
 }
-
 
 const mapStateToProps = function (state) {
 	return {
@@ -22,3 +20,5 @@ const mapStateToProps = function (state) {
 }
 
  export default connect(mapStateToProps)(FooterPage)
+
+ 
