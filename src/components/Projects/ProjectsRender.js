@@ -13,7 +13,7 @@ export default class ProjectsRender extends PureComponent  {
     const name = e.currentTarget.name
     const id = (e.currentTarget.id)
     this.props.handleUpdateCounter(id, {[name]: 1})
-    setTimeout(() => window.open(value), 1000)
+    setTimeout(() => window.open(value), 500)
   }
 
   prevPage = () => {
