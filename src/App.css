@@ -60,18 +60,19 @@ body {
 }
 
 .card:hover {
-  box-shadow: 3px 3px 10px grey;
+  box-shadow: 3px 3px 10px #6A6C6C;
   transform: scale(1.01, 1.01);
 }
 
 .card_header {
-  font-size: 2.5em;
+  font-size: 3em;
   height: 1em;
   overflow: hidden;
   text-align: center;
   padding: 6px 4px 16px 4px;
   font-family: 'Open Sans Condensed', sans-serif;
   z-index: 5;
+  color: #49616C;
   box-shadow: 0px 2px 20px black;
 }
 
@@ -95,6 +96,7 @@ body {
   font-weight: 300;
   padding: 6px 10px 2px 6px;
   text-align: justify; 
+  color: #49616C;
 }
 
 .card_tools {
@@ -122,6 +124,7 @@ hr { width:100%; height:1px; background: #fff }
   padding: 6px;
   position:relative;
   top:-8px;
+  color: #49616C;
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
@@ -141,12 +144,12 @@ hr { width:100%; height:1px; background: #fff }
 }
 
 .card_action_button:hover {
-  box-shadow: 0px 0px 20px grey;
+  box-shadow: 0px 0px 20px #6A6C6C;
   transform: rotate(360deg);
 }
 
 .card_action_button:active {
-  box-shadow: inset 0px 0px 5px grey; 
+  box-shadow: inset 0px 0px 5px #6A6C6C; 
 }
 
 .loader {
@@ -157,13 +160,13 @@ hr { width:100%; height:1px; background: #fff }
   height: 50px;
   animation: spin 1s linear infinite;
   margin: auto 50%;
-  box-shadow: 0px 0px 0px grey; 
+  box-shadow: 0px 0px 0px #6A6C6C; 
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg) scale(1, 1); box-shadow: 0px 0px 10px grey; }
-  50% { transform: rotate(180deg) scale(1.15, 1.15); box-shadow: 0px 0px 20px grey; }
-  100% { transform: rotate(360deg) scale(1, 1); box-shadow: 0px 0px 10px grey; }
+  0% { transform: rotate(0deg) scale(1, 1); box-shadow: 0px 0px 10px #6A6C6C; }
+  50% { transform: rotate(180deg) scale(1.15, 1.15); box-shadow: 0px 0px 20px #6A6C6C; }
+  100% { transform: rotate(360deg) scale(1, 1); box-shadow: 0px 0px 10px #6A6C6C; }
 }
 
 @keyframes fadein {
@@ -193,7 +196,7 @@ hr { width:100%; height:1px; background: #fff }
   height: 100%;
   width: 40%;
   z-index: 5;
-  box-shadow: 0px 2px 20px grey;
+  box-shadow: 0px 2px 20px #6A6C6C;
   background: linear-gradient(to bottom right, #ee5050, #AE3B3B);
 }
 
@@ -207,6 +210,8 @@ hr { width:100%; height:1px; background: #fff }
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 3em;
   font-weight: 300;
+  padding: 0px;
+  margin: 0px;
 }
 
 .sidebar_under {
@@ -215,6 +220,7 @@ hr { width:100%; height:1px; background: #fff }
   font-size: 1.2em;
   font-style: italic;
   font-weight: 100;
+  margin: 0px;
 }
 
 .sidebar_content_container {

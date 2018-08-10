@@ -89,7 +89,7 @@ renderProjects = () => {
       {/* <hr /> */}
       <div className="card_tools">
         {this.props.projects[this.state.page].tools.map((t, index) => {
-          return (<Icon name={t.name} color="#000000" width={32} height={32}  key={index} value={index}/>)
+          return (<Icon name={t.name} color="#49616C" width={32} height={32}  key={index} value={index}/>)
         })}
       </div>
       <hr />
