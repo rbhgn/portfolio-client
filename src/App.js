@@ -8,8 +8,7 @@ import LoginPage from './components/Login/LoginPage';
 import LogoutPage from './components/Logout/LogoutPage';
 import ProjectPage from './components/Project/ProjectPage';
 import ProjectsPage from './components/Projects/ProjectsPage'
-import NavbarPage from './components/Navbar/NavbarPage'
-import FooterPage from './components/Footer/FooterPage';
+import SidebarPage from './components/Sidebar/SidebarPage';
 
 class App extends Component {
   render() {
@@ -23,7 +22,7 @@ class App extends Component {
             <Route exact path="/project/:id?" component={ ProjectPage}/>
             <Route exact path="/projects" component={ ProjectsPage}/>
           </main>
-          <FooterPage />
+          <SidebarPage />
         </div>
       </Router>
     )

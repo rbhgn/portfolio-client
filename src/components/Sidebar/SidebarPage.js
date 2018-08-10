@@ -1,18 +1,16 @@
 import React, {PureComponent} from 'react'
 import { connect } from 'react-redux'
-import NavbarRender from './NavbarRender'
+import SidebarRender from './SidebarRender'
 
 
-class NavbarPage extends PureComponent  {
+class SidebarPage extends PureComponent  {
  
  render() {
-
   return (
-    <NavbarRender />
+    <SidebarRender />
   )
  }
 }
-
 
 const mapStateToProps = function (state) {
 	return {
@@ -21,4 +19,6 @@ const mapStateToProps = function (state) {
 	}
 }
 
- export default connect(mapStateToProps)(NavbarPage)
+ export default connect(mapStateToProps)(SidebarPage)
+
+ 
