@@ -12,7 +12,7 @@ export default class ProjectsRender extends PureComponent  {
     setTimeout(() => window.open(value), 1000)
     
   }
-  prevPage = (e) => {
+  prevPage = () => {
     this.refs.Card.style.opacity = 0
     setTimeout(() => {
     return (
@@ -57,8 +57,8 @@ export default class ProjectsRender extends PureComponent  {
 renderProjects = () => {
   return (
     <div className="projects_container">
-    <div className="slide_button">
-    <button onClick={this.prevPage} > Links </button>
+    <div className="slide_button_container">
+    <button onClick={this.prevPage}className="slide_button" ><Icon name="arrow-left" color="#ee5050 " width={16} height={64} /></button>
     </div>
         <div key={this.state.page} className="card" ref="Card">
           <div className="card_header" >
@@ -73,7 +73,7 @@ renderProjects = () => {
           <hr />
           <div className="card_tools">
             {this.props.projects[this.state.page].tools.map((t, index) => {
-              return (<Icon name={t.name} color="#000000" size={32} key={index} value={index}/>)
+              return (<Icon name={t.name} color="#000000" width={32} height={32}  key={index} value={index}/>)
             })}
           </div>
           <hr />
@@ -85,7 +85,7 @@ renderProjects = () => {
                   id={this.props.projects[this.state.page].id}
                   value={`https://github.com/rbhgn/${this.props.projects[this.state.page].githubRepository}`} 
                   className="card_action_button">
-                  <Icon name="github" color="#ee5050" size={16} />
+                  <Icon name="github" color="#ee5050" width={16} height={16}  />
                 </button>  
                 <p className="view_text">{ this.props.projects[this.state.page].gitHub }</p> 
             </div> }
@@ -97,7 +97,7 @@ renderProjects = () => {
                 id={this.props.projects[this.state.page].id}
                 value={this.props.projects[this.state.page].previewUrl} 
                 className="card_action_button">
-                  <Icon name="web" color="#ee5050" size={16} />
+                  <Icon name="web" color="#ee5050" width={16} height={16}  />
               </button> 
               <p className="view_text">{ this.props.projects[this.state.page].web }</p> 
             </div>
@@ -110,21 +110,21 @@ renderProjects = () => {
                 id={this.props.projects[this.state.page].id}
                 value="1"
                 className="card_action_button">
-                  <Icon name="heart" color="#ee5050 " size={16} />
+                  <Icon name="heart" color="#ee5050 " width={16} height={16}  />
               </button> 
               <p className="view_text">{ this.props.projects[this.state.page].likes }</p> 
             </div> }
           </div>
         </div>
-        <div className="slide_button">
-        <button onClick={this.nextPage}>rechts</button>
+        <div className="slide_button_container">
+        <button onClick={this.nextPage} className="slide_button"><Icon name="arrow-right" color="#ee5050 " width={16} height={64}  /></button>
         </div>
     </div>
   )
 }
  render() {
     return (
-      this.state.imagesLoaded ? this.renderProjects() : <Loader color="#ee5050"/>
+      this.state.imagesLoaded ? this.renderProjects() : <div className="projects_container"><Loader color="#ee5050"/></div>
     )
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Loader = (props) => {
   return (
-<div style={{marginLeft: '50%',marginRight: '50%', display: 'block', textAlign:'center', paddingTop: '100px'}}>
+<div style={{marginLeft: '50%',marginRight: '50%', display: 'block', textAlign:'center'}}>
     <div className="loader"
       style={{ 
         borderColor: `transparent`, 
