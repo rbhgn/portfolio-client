@@ -43,7 +43,7 @@
 }
 
 .card:hover {
-  box-shadow: 3px 3px 10px #6A6C6C;
+  box-shadow: 3px 3px 10px #49616C;
   transform: scale(1.01, 1.01);
 }
 
@@ -56,7 +56,7 @@
   font-family: 'Open Sans Condensed', sans-serif;
   z-index: 5;
   color: #49616C;
-  box-shadow: 0px 2px 20px black;
+  box-shadow: 0px 2px 20px #49616C;
 }
 
 .card_container_img {
@@ -71,6 +71,9 @@
   max-height: 100vh;
   margin: auto;
   animation: fadein 2s;
+}
+.card_img:hover {
+  animation: fadeout 2s;
 }
 
 .card_description {
@@ -129,13 +132,11 @@ hr { width:100%; height:1px; background: #fff }
 }
 
 .card_action_button:hover {
-  /* box-shadow: 0px 0px 20px #6A6C6C; */
   transform: rotate(360deg);
   background: #ffffff;
 }
 
 .card_action_button:active {
-  /* box-shadow: inset 0px 0px 5px #6A6C6C; */
   background: transparent;
 }
 
@@ -147,16 +148,21 @@ hr { width:100%; height:1px; background: #fff }
   height: 50px;
   animation: spin 1s linear infinite;
   margin: auto 50%;
-  box-shadow: 0px 0px 0px #6A6C6C; 
+  box-shadow: 0px 0px 0px #49616C; 
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg) scale(1, 1); box-shadow: 0px 0px 10px #6A6C6C; }
-  50% { transform: rotate(180deg) scale(1.15, 1.15); box-shadow: 0px 0px 20px #6A6C6C; }
-  100% { transform: rotate(360deg) scale(1, 1); box-shadow: 0px 0px 10px #6A6C6C; }
+  0% { transform: rotate(0deg) scale(1, 1); box-shadow: 0px 0px 10px #49616C; }
+  50% { transform: rotate(180deg) scale(1.15, 1.15); box-shadow: 0px 0px 20px #49616C; }
+  100% { transform: rotate(360deg) scale(1, 1); box-shadow: 0px 0px 10px #49616C; }
 }
 
 @keyframes fadein {
   from { opacity: 0;}
   to   { opacity: 1;}
+}
+
+@keyframes fadeout {
+  from { opacity: 1;}
+  to   { opacity: 0;}
 }

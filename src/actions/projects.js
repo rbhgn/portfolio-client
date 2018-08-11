@@ -1,7 +1,6 @@
 import * as request from 'superagent'
 import { baseUrl } from '../constants'
 
-
 export const UPDATE_COUNTER_SUCCESS = 'UPDATE_COUNTER_SUCCESS'
 export const LOAD_PROJECTS_SUCCESS = 'LOAD_PROJECTS_SUCCESS'
 
@@ -17,7 +16,7 @@ const updateCounterSuccess = (data) => ({
 
 export const loadProjects = () => (dispatch) => {
   request
-    .get(`${baseUrl}/projects`)
+    .get( `${baseUrl}/projects`)
     .then(result => dispatch(loadProjectsSuccess(result.body)))
     .catch(err => console.error(err))
 }

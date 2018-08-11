@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-
 import './App.css'
-
 import SignupPage from './components/Signup/SignupPage';
 import LoginPage from './components/Login/LoginPage';
 import LogoutPage from './components/Logout/LogoutPage';

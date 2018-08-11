@@ -20,7 +20,7 @@ const updateProjectSuccess = (data) => ({
 
 export const loadProject = (id) => (dispatch) => {
   request
-    .get(`${baseUrl}/projects/${id}`)
+    .get(process.env.SERVER_URL + `/projects/${id}`)
     .then(result => dispatch(loadProjectSuccess(result.body)))
     .catch(err => console.error(err))
 }
