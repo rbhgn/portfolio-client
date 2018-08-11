@@ -86,9 +86,8 @@ renderProjects = () => {
       <div className="card_description">
         {this.props.projects[this.state.page].description}
       </div>
-      {/* <hr /> */}
       <div className="card_tools">
-        {this.props.projects[this.state.page].tools.map((t, index) => {
+        {this.props.projects[this.state.page].tools.sort((a, b) => a.id > b.id).map((t, index) => {
           return (<Icon name={t.name} color="#49616C" width={32} height={32}  key={index} value={index}/>)
         })}
       </div>

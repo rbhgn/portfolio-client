@@ -8,7 +8,8 @@ import LoginPage from './components/Login/LoginPage';
 import LogoutPage from './components/Logout/LogoutPage';
 import ProjectPage from './components/Project/ProjectPage';
 import ProjectsPage from './components/Projects/ProjectsPage'
-import SidebarPage from './components/Sidebar/SidebarPage';
+import BioPage from './components/Bio/BioPage';
+import LandingPage from './components/Landing/LandingPage';
 
 class App extends Component {
   render() {
@@ -20,9 +21,11 @@ class App extends Component {
             <Route exact path="/login" component={ LoginPage }/>
             <Route exact path="/logout" component={ LogoutPage }/>
             <Route exact path="/project/:id?" component={ ProjectPage}/>
-            <Route exact path="/" component={ ProjectsPage}/>
+            <Route exact path="/projects" component={ ProjectsPage}/>
+            <Route exact path="/bio" component={ BioPage}/>
+            <Route exact path="/" component={ LandingPage}/>
           </main>
-          <SidebarPage />
+          
         </div>
       </Router>
     )

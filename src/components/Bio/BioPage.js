@@ -1,13 +1,13 @@
 import React, {PureComponent} from 'react'
 import { connect } from 'react-redux'
-import SidebarRender from './SidebarRender'
+import BioRender from './BioRender'
+import './Bio.css'
 
-
-class SidebarPage extends PureComponent  {
+class BioPage extends PureComponent  {
  
  render() {
   return (
-    <SidebarRender />
+    <BioRender />
   )
  }
 }
@@ -19,6 +19,6 @@ const mapStateToProps = function (state) {
 	}
 }
 
- export default connect(mapStateToProps)(SidebarPage)
+ export default connect(mapStateToProps)(BioPage)
 
  

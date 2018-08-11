@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { loadProjects, updateCounter}  from '../../actions/projects'
 import ProjectsRender from './ProjectsRender'
 import {Loader} from '../Loader'
-
+import './Projects.css'
 class ProjectsPage extends PureComponent  {
   handleUpdateCounter = (id, data) => {
     this.props.updateCounter(id, data)
